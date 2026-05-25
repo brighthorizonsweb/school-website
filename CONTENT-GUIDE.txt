@@ -1,0 +1,199 @@
+BRIGHT HORIZONS ACADEMY — CONTENT EDITING GUIDE
+=================================================
+Studio URL: https://brighthorizonsal.sanity.studio
+
+
+HOW TO LOG IN
+-------------
+1. Go to https://brighthorizonsal.sanity.studio
+2. Click "Log in"
+3. Sign in with the same Google or email account used to set up Sanity
+
+
+STUDIO NAVIGATION
+-----------------
+The left sidebar organizes content into five sections:
+  - Site Settings
+  - Pages
+  - Weekly Newsletter
+  - Calendar
+  - FAQ
+
+
+===========================================================
+SECTION 1: SITE SETTINGS
+===========================================================
+Location: Left sidebar → "Site Settings"
+
+This controls global content that appears on every page.
+
+Fields:
+  - School Name        → Appears in the browser tab, header, and footer
+  - Tagline            → Appears under the logo in the header and footer
+  - Alert Banner       → Appears as a yellow bar at the top of every page
+                         (leave blank to hide it)
+  - Admin Email        → Shown in the footer and Contact page
+  - Phone Number       → Shown in the footer and Contact page
+
+How to save: Click the "Publish" button in the bottom right corner
+
+
+===========================================================
+SECTION 2: PAGES
+===========================================================
+Location: Left sidebar → "Pages" → choose a page
+
+-----------------------------
+2a. HOME PAGE
+-----------------------------
+Location: Pages → Home Page
+
+Fields:
+  - Intro Line         → Short sentence displayed below the logo on the homepage
+  - Mission Statement  → The full mission text displayed in the "Our Mission" section
+
+-----------------------------
+2b. ABOUT PAGE
+-----------------------------
+Location: Pages → About Page
+
+Fields:
+  - Page Title         → Heading shown at the top of the About page
+  - Intro Paragraph    → Short description shown in the page banner
+  - Mission Statement  → Mission text on the About page (can match or expand on Home)
+  - Sections           → List of content blocks (e.g. "Our Approach", "Micro-School Community")
+                         Each section has:
+                           * Heading
+                           * Body text
+                           * Optional images with captions
+
+To add a section: Click "+ Add item" at the bottom of the Sections list
+To reorder sections: Drag the handle on the left side of each section
+To remove a section: Click the three-dot menu on the section → Delete
+
+-----------------------------
+2c. STUDENT LIFE PAGE
+-----------------------------
+Location: Pages → Student Life
+
+Fields:
+  - Page Title         → Heading shown at the top of the page
+  - Intro Text         → Short description shown in the page banner
+  - Sections           → Subject-based content blocks (e.g. "Art", "Music", "Project Day")
+                         Each section has:
+                           * Heading (e.g. "Art")
+                           * Body text (story-like paragraph)
+                           * Optional images with captions
+
+To add a new subject section: Click "+ Add item" under Sections
+
+-----------------------------
+2d. CONTACT PAGE
+-----------------------------
+Location: Pages → Contact Page
+
+Fields:
+  - Headline           → Large heading on the contact page (e.g. "We would love to hear from you")
+  - Body Text          → Paragraph below the headline
+
+Note: The actual email and phone number come from Site Settings, not this page.
+
+-----------------------------
+(No separate page for FAQ or Calendar — those are managed as collections, see below)
+
+
+===========================================================
+SECTION 3: WEEKLY NEWSLETTER
+===========================================================
+Location: Left sidebar → "Weekly Newsletter"
+
+Each newsletter issue is a separate document in the list, sorted newest first.
+
+To create a new issue:
+  1. Click "Create new" in the top right
+  2. Fill in the fields:
+       - Title          → e.g. "Week of June 2"
+       - Week Of        → Pick the date from the calendar
+       - Slug           → Click "Generate" (auto-fills from title)
+       - Published At   → Optional date/time stamp
+       - Body           → Main newsletter text (supports bold, italic, links, paragraphs)
+       - Images         → Upload one or more photos; each can have alt text and a caption
+  3. Click "Publish"
+
+To edit an existing issue:
+  1. Click the issue in the list
+  2. Make changes
+  3. Click "Publish"
+
+To delete an issue:
+  1. Open the issue
+  2. Click the three-dot menu (top right of the document)
+  3. Select "Delete"
+
+
+===========================================================
+SECTION 4: CALENDAR
+===========================================================
+Location: Left sidebar → "Calendar"
+
+Events are listed in the sidebar sorted by date. The website displays them in
+chronological order and automatically scrolls to the nearest upcoming event.
+
+To add an event:
+  1. Click "Create new"
+  2. Fill in the fields:
+       - Date           → Pick from the calendar
+       - Time Label     → Type the time as text, e.g. "All day" or "3:00 PM"
+       - Title          → Name of the event
+       - Description    → Optional extra detail
+       - Link URL       → Optional — paste a full URL (e.g. to a permission form)
+       - Link Label     → The text for the link, e.g. "Permission form"
+  3. Click "Publish"
+
+To delete an event:
+  1. Open the event
+  2. Click the three-dot menu → Delete
+
+
+===========================================================
+SECTION 5: FAQ
+===========================================================
+Location: Left sidebar → "FAQ"
+
+Each FAQ item is a separate document. Items labeled "Example" in the list
+are placeholder entries — replace or delete them before the site goes live.
+
+To add a question:
+  1. Click "Create new"
+  2. Fill in:
+       - Question       → The question text
+       - Answer         → The answer text
+       - Example Item   → Leave unchecked for real FAQs; check only for placeholders
+       - Sort Order     → Number that controls the display order (lower = higher on page)
+  3. Click "Publish"
+
+To replace an example item:
+  1. Click the example in the list
+  2. Update the Question and Answer fields
+  3. Uncheck "Example Item"
+  4. Click "Publish"
+
+
+===========================================================
+GENERAL TIPS
+===========================================================
+
+Publishing vs. Draft:
+  - Content is NOT live until you click "Publish"
+  - You can save a draft without publishing by navigating away
+  - A blue dot on a document means it has unpublished changes
+
+Images:
+  - Drag and drop image files directly onto an image field
+  - Always fill in "Alt Text" — this is required for accessibility
+  - Caption is optional and appears below the image on the website
+
+The website rebuilds automatically on Cloudflare whenever you publish
+content... [NOTE: This is only true if a build webhook is configured.
+If auto-rebuild is not set up, the site must be manually redeployed
+from GitHub or Cloudflare to reflect Sanity changes.]
