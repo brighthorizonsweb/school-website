@@ -20,6 +20,12 @@ const events = withCalendarEvents(await sanityClient.fetch(calendarEventsQuery))
 			aria-hidden="true"
 		>
 		</div>
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<div class="absolute left-[3%] top-14 h-20 w-28 rotate-8 rounded-2xl bg-sky-200/40"></div>
+			<div class="absolute right-[4%] top-20 h-28 w-20 -rotate-6 rounded-2xl bg-amber-200/40"></div>
+			<div class="absolute bottom-20 left-[7%] h-24 w-20 -rotate-4 rounded-2xl bg-teal-200/35"></div>
+			<div class="absolute bottom-8 right-[9%] h-20 w-24 rotate-6 rounded-2xl bg-sky-300/30"></div>
+		</div>
 
 		<section class="relative mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
 			<ol class="space-y-5" id="calendar-list">

@@ -14,8 +14,15 @@ const faqItems = withFaqItems(await sanityClient.fetch(faqItemsQuery));
 		subtitle="Quick answers for prospective and current families."
 	/>
 
-	<section class="bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-3xl space-y-3">
+	<section class="relative overflow-hidden bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<div class="absolute left-[2%] top-16 h-28 w-20 rotate-8 rounded-2xl bg-violet-200/50"></div>
+			<div class="absolute right-[4%] top-10 h-20 w-32 -rotate-6 rounded-2xl bg-amber-200/50"></div>
+			<div class="absolute bottom-20 left-[8%] h-24 w-24 -rotate-3 rounded-2xl bg-sky-200/50"></div>
+			<div class="absolute bottom-6 right-[10%] h-32 w-18 rotate-10 rounded-2xl bg-violet-300/30"></div>
+			<div class="absolute left-[42%] top-4 h-12 w-20 -rotate-8 rounded-xl bg-amber-300/25"></div>
+		</div>
+		<div class="relative mx-auto max-w-3xl space-y-3">
 			{
 				faqItems.map((item) => (
 					<details class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm transition-shadow hover:shadow-md">

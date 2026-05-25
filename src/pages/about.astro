@@ -21,8 +21,15 @@ const aboutPage = withAboutPage(await sanityClient.fetch(aboutPageQuery));
 		</div>
 	</section>
 
-	<section class="bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-4xl space-y-6">
+	<section class="relative overflow-hidden bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<div class="absolute left-[3%] top-10 h-32 w-32 rotate-6 rounded-2xl bg-teal-200/50"></div>
+			<div class="absolute right-[5%] top-20 h-24 w-28 -rotate-8 rounded-2xl bg-sky-200/60"></div>
+			<div class="absolute bottom-16 left-[10%] h-20 w-36 rotate-3 rounded-2xl bg-amber-200/50"></div>
+			<div class="absolute bottom-8 right-[12%] h-28 w-20 -rotate-6 rounded-2xl bg-teal-300/30"></div>
+			<div class="absolute right-[35%] top-6 h-14 w-14 rotate-12 rounded-xl bg-sky-300/30"></div>
+		</div>
+		<div class="relative mx-auto max-w-4xl space-y-6">
 			{
 				aboutPage.sections?.map((section) => (
 					<article class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
@@ -48,3 +55,4 @@ const aboutPage = withAboutPage(await sanityClient.fetch(aboutPageQuery));
 		</div>
 	</section>
 </Layout>
+

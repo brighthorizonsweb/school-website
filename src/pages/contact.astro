@@ -17,8 +17,14 @@ const phoneTel = phone.replace(/\D/g, '').length >= 10 ? `+1${phone.replace(/\D/
 <Layout title="Contact">
 	<PageHeader title={contactPage.headline ?? 'Contact Us'} subtitle={contactPage.bodyText} />
 
-	<section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-2xl">
+	<section class="relative overflow-hidden bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<div class="absolute left-[5%] top-12 h-24 w-24 rotate-6 rounded-2xl bg-amber-200/50"></div>
+			<div class="absolute right-[6%] top-16 h-32 w-20 -rotate-10 rounded-2xl bg-sky-200/50"></div>
+			<div class="absolute bottom-10 left-[15%] h-20 w-28 rotate-4 rounded-2xl bg-teal-200/40"></div>
+			<div class="absolute bottom-14 right-[18%] h-24 w-16 -rotate-6 rounded-2xl bg-amber-300/30"></div>
+		</div>
+		<div class="relative mx-auto max-w-2xl">
 			<div class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
 				<div class="h-1.5 bg-sky-800"></div>
 				<div class="grid gap-8 p-8 sm:grid-cols-2 sm:p-10">

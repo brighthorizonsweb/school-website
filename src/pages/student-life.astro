@@ -12,8 +12,15 @@ const learningLifePage = withLearningLifePage(await sanityClient.fetch(learningL
 <Layout title={learningLifePage.pageTitle}>
 	<PageHeader title={learningLifePage.pageTitle ?? 'Student Life'} subtitle={learningLifePage.introText} />
 
-	<section class="bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-5xl space-y-8">
+	<section class="relative overflow-hidden bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<div class="absolute left-[2%] top-14 h-28 w-28 -rotate-6 rounded-2xl bg-teal-200/50"></div>
+			<div class="absolute right-[3%] top-24 h-20 w-24 rotate-10 rounded-2xl bg-rose-200/40"></div>
+			<div class="absolute bottom-24 left-[6%] h-24 w-20 rotate-4 rounded-2xl bg-sky-200/50"></div>
+			<div class="absolute bottom-10 right-[8%] h-32 w-24 -rotate-8 rounded-2xl bg-teal-300/30"></div>
+			<div class="absolute right-[38%] top-6 h-14 w-18 rotate-6 rounded-xl bg-rose-300/25"></div>
+		</div>
+		<div class="relative mx-auto max-w-5xl space-y-8">
 			{
 				learningLifePage.sections?.map((section) => (
 					<article class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
