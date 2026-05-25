@@ -3,22 +3,17 @@ import { defineConfig } from 'astro/config';
 import sanity from '@sanity/astro';
 import tailwindcss from '@tailwindcss/vite';
 
-import cloudflare from '@astrojs/cloudflare';
-
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-      sanity({
-          projectId: 'w4n109hm',
-          dataset: 'production',
-          apiVersion: '2026-03-01',
-          useCdn: false,
-      }),
+	integrations: [
+		sanity({
+			projectId: 'w4n109hm',
+			dataset: 'production',
+			apiVersion: '2026-03-01',
+			useCdn: false,
+		}),
 	],
-
-  vite: {
-      plugins: [tailwindcss()],
+	vite: {
+		plugins: [tailwindcss()],
 	},
-
-  adapter: cloudflare(),
 });
