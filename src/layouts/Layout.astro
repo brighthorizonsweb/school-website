@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { sanityClient } from 'sanity:client';
+import { siteSettingsQuery } from '../lib/queries';
+import type { SiteSettings } from '../lib/types';
+import { DEFAULT_SCHOOL_NAME } from '../lib/types';
+import AlertBanner from '../components/AlertBanner.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+	title?: string;
+}
+
+const { title } = Astro.props;
+
+const settings =
+	(await sanityClient.fetch<SiteSettings | null>(siteSettingsQuery)) ?? ({} as SiteSettings);
+
+const schoolName = settings.schoolName ?? DEFAULT_SCHOOL_NAME;
+const pageTitle = title ? `${title} | ${schoolName}` : schoolName;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	</head>
+	<body class="flex min-h-screen flex-col bg-stone-50 text-slate-800 antialiased">
+		{settings.alertBanner && <AlertBanner message={settings.alertBanner} />}
+		<Header settings={settings} currentPath={currentPath} />
+		<main class="flex-1">
+			<slot settings={settings} />
+		</main>
+		<Footer settings={settings} />
+	</body>
+</html>

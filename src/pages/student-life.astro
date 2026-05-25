@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CaptionedImage from '../components/CaptionedImage.astro';
+import { sanityClient } from 'sanity:client';
+import { learningLifePageQuery } from '../lib/queries';
+import { withLearningLifePage } from '../lib/content';
+
+const learningLifePage = withLearningLifePage(await sanityClient.fetch(learningLifePageQuery));
+---
+
+<Layout title={learningLifePage.pageTitle}>
+	<PageHeader title={learningLifePage.pageTitle ?? 'Student Life'} subtitle={learningLifePage.introText} />
+
+	<section class="bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-5xl space-y-8">
+			{
+				learningLifePage.sections?.map((section) => (
+					<article class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
+						<div class="flex flex-col lg:flex-row lg:items-stretch">
+							<div class="w-full lg:w-1.5 shrink-0 bg-sky-800 lg:h-auto h-1.5"></div>
+							<div class="flex-1 p-7 sm:p-8">
+								<h2 class="text-2xl font-extrabold tracking-tight text-sky-950">{section.heading}</h2>
+								<p class="prose-bha mt-4 text-slate-600">{section.body}</p>
+								{
+									section.images?.length ? (
+										<div class="mt-6 grid gap-4 sm:grid-cols-2">
+											{section.images.map((image) => (
+												<CaptionedImage image={image} />
+											))}
+										</div>
+									) : null
+								}
+							</div>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaptionedImage from '../../components/CaptionedImage.astro';
+import { sanityClient } from 'sanity:client';
+import { newsletterIssueBySlugQuery, newsletterSlugsQuery } from '../../lib/queries';
+import { formatWeekOf } from '../../lib/content';
+import { portableTextToHtml } from '../../lib/portableText';
+import { fallbackNewsletterDetail } from '../../lib/fallbacks';
+import type { NewsletterIssue } from '../../lib/types';
+
+export async function getStaticPaths() {
+	const slugs =
+		(await sanityClient.fetch<Array<{ slug: string }>>(newsletterSlugsQuery)) ?? [];
+
+	if (!slugs.length) {
+		return [{ params: { slug: fallbackNewsletterDetail.slug!.current! } }];
+	}
+
+	return slugs.map(({ slug }) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+
+let issue = await sanityClient.fetch<NewsletterIssue | null>(newsletterIssueBySlugQuery, { slug });
+
+if (!issue && slug === fallbackNewsletterDetail.slug?.current) {
+	issue = fallbackNewsletterDetail;
+}
+
+if (!issue) {
+	return Astro.redirect('/newsletter');
+}
+
+const bodyHtml = portableTextToHtml(issue.body);
+---
+
+<Layout title={issue.title}>
+	<article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+		<a href="/newsletter" class="inline-flex min-h-12 items-center text-sm font-semibold text-sky-700 hover:text-sky-900">
+			← Back to Newsletter
+		</a>
+
+		<header class="mt-4 border-b border-sky-100 pb-6">
+			<h1 class="text-3xl font-bold text-sky-950 sm:text-4xl">{issue.title}</h1>
+			<p class="mt-2 text-sm text-slate-500">{formatWeekOf(issue.weekOf)}</p>
+		</header>
+
+		{
+			bodyHtml && (
+				<div class="prose-bha mt-8 max-w-none" set:html={bodyHtml} />
+			)
+		}
+
+		{
+			issue.images?.length ? (
+				<div class="mt-10 grid gap-6 sm:grid-cols-2">
+					{issue.images.map((image) => (
+						<CaptionedImage image={image} />
+					))}
+				</div>
+			) : null
+		}
+	</article>
+</Layout>

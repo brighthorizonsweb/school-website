@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { sanityClient } from 'sanity:client';
+import { contactPageQuery, siteSettingsQuery } from '../lib/queries';
+import { withContactPage, withSiteSettings } from '../lib/content';
+import { DEFAULT_EMAIL, DEFAULT_PHONE, DEFAULT_PHONE_TEL } from '../lib/types';
+
+const contactPage = withContactPage(await sanityClient.fetch(contactPageQuery));
+const settings = withSiteSettings(await sanityClient.fetch(siteSettingsQuery));
+
+const email = settings.adminEmail ?? DEFAULT_EMAIL;
+const phone = settings.phoneNumber ?? DEFAULT_PHONE;
+const phoneTel = phone.replace(/\D/g, '').length >= 10 ? `+1${phone.replace(/\D/g, '')}` : DEFAULT_PHONE_TEL;
+---
+
+<Layout title="Contact">
+	<PageHeader title={contactPage.headline ?? 'Contact Us'} subtitle={contactPage.bodyText} />
+
+	<section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-2xl">
+			<div class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
+				<div class="h-1.5 bg-sky-800"></div>
+				<div class="grid gap-8 p-8 sm:grid-cols-2 sm:p-10">
+					<div>
+						<p class="text-xs font-bold uppercase tracking-widest text-sky-700">Email</p>
+						<a
+							href={`mailto:${email}`}
+							class="mt-2 inline-flex min-h-12 items-center text-base font-semibold text-sky-800 hover:text-sky-950"
+						>
+							{email}
+						</a>
+					</div>
+					<div>
+						<p class="text-xs font-bold uppercase tracking-widest text-sky-700">Phone</p>
+						<a
+							href={`tel:${phoneTel}`}
+							class="mt-2 inline-flex min-h-12 items-center text-base font-semibold text-sky-800 hover:text-sky-950"
+						>
+							{phone}
+						</a>
+						<p class="mt-1 text-xs text-slate-400">Placeholder for site preview</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

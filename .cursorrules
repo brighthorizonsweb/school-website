@@ -1,8 +1,38 @@
 You are an expert web developer building a private school website using Astro (v4+), Tailwind CSS, and Sanity CMS on Windows 11. The site hosts on Cloudflare Pages.
 
-Follow these strict rules:
-1. All terminal commands must be native, valid Windows PowerShell commands.
-2. Use explicit backslashes (\) for Windows file system paths.
-3. Fetch data from Sanity at build time using `@astrojs/sanity`.
-4. Keep the code responsive and heavily optimized for mobile-using parents.
-5. Provide precise instructions on creating or modifying files in a Windows environment.
+`
+# ==========================================
+# PRIVATE SCHOOL WEBSITE PROJECT RULES
+# Stack: Astro (v4+), Sanity CMS (v3+), Tailwind CSS
+# Environment: Windows 11 (PowerShell), Cloudflare Pages
+# ==========================================
+
+# 1. CORE ARCHITECTURE & DATA FLOW
+- This website is a flat, static build hosted on Cloudflare Pages. 
+- All dynamic data (Homepage blocks, PDFs, alerts) must be fetched at build-time using `@astrojs/sanity` and GROQ queries.
+- Do not add client-side database connections or run-time admin login pages to the public frontend website.
+- Use Sanity singletons for fixed pages (Home, Admissions) and document arrays/collections for repeating lists (Staff, Announcements).
+- Optimize images using the `@sanity/image-url` helper to dynamically crop and compress admin-uploaded photos at build-time.
+
+# 2. FILE PATHS & TERMINAL RULES (WINDOWS NATIVE)
+- Every single terminal or CLI command provided must be 100% valid, native Windows PowerShell (pwsh) syntax.
+- Use explicit backslashes (\) for all Windows file system directories and paths.
+- Avoid Linux-specific utilities like `mkdir -p` or `touch`. Use `New-Item` or explicit instructions for creating files.
+- When generating string commands in terminal scripts, ensure proper double-quote wrapping compatible with PowerShell.
+
+# 3. FRONTEND & STYLING SPECIFICATIONS
+- Use modern Astro component architecture (`.astro` files). Separate backend script frontmatter (between `---`) from semantic HTML template markups.
+- Style exclusively with utility-first Tailwind CSS classes. No inline styles or external `.css` files unless absolutely mandatory.
+- All page layouts and blocks must be meticulously crafted with a mobile-first responsive grid. School parents will view this site heavily on smartphones.
+- Build clean component primitives (e.g., `Header.astro`, `Footer.astro`, `AlertBanner.astro`) to eliminate code duplication across pages.
+- Meticulously implement touch-friendly targets (minimum 48x48px) for all phone interaction links.
+- Explicitly integrate the '@sanity/image-url' builder to serve compressed, web-optimized webp image sizes for mobile networks.
+- Enforce standard mobile-native web protocols including 'tel:' for phone connections and 'mailto:' for school admin emails.
+- Build clean, fluid-responsive components that naturally transition between desktop grids and single-column mobile layouts.
+
+# 4. CODE DELIVERABLES EXPECTATION
+- Provide complete, copy-pasteable files rather than vague code fragments.
+- Clearly state the exact Windows path location where the file belongs at the very top of your response.
+
+1. Global Settings (Managed Once)These are items that appear everywhere on the site.Sanity Blocks: School Phone Number, Admin Email Address, Alerts Banner (e.g., "Snow Day Close!").Astro Layout: Astro takes these fields and automatically updates your site-wide header and footer.
+2. The Singleton Pages (Fixed Layouts)These are pages that have a permanent structural layout, where only the wording or images change.The Homepage:Block 1 (Hero): A single headline field, subtitle field, and a main image upload block

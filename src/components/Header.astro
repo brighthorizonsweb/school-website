@@ -1,0 +1,81 @@
+---
+import type { SiteSettings } from '../lib/types';
+import { DEFAULT_SCHOOL_NAME, DEFAULT_TAGLINE, NAV_LINKS } from '../lib/types';
+
+interface Props {
+	settings: SiteSettings;
+	currentPath?: string;
+}
+
+const { settings, currentPath = Astro.url.pathname } = Astro.props;
+
+const schoolName = settings.schoolName ?? DEFAULT_SCHOOL_NAME;
+const tagline = settings.tagline ?? DEFAULT_TAGLINE;
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+	<div class="h-1 bg-amber-400" aria-hidden="true"></div>
+	<div class="border-b border-sky-100/60">
+		<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+			<a href="/" class="flex min-h-12 min-w-0 items-center gap-3">
+				<img
+					src="/logo_color_v7.png"
+					alt={`${schoolName} logo`}
+					class="h-10 w-auto max-w-[160px] shrink-0 rounded-lg object-contain sm:h-11"
+				/>
+				<div class="hidden min-w-0 sm:block">
+					<p class="truncate text-sm font-bold text-sky-950 sm:text-base">{schoolName}</p>
+					<p class="truncate text-xs text-slate-500">{tagline}</p>
+				</div>
+			</a>
+
+			<nav class="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
+				{
+					NAV_LINKS.map((link) => {
+						const isActive =
+							link.href === '/'
+								? currentPath === '/'
+								: currentPath === link.href || currentPath.startsWith(`${link.href}/`);
+						return (
+							<a
+								href={link.href}
+								class:list={[
+									'min-h-12 rounded-lg px-3 py-3 text-sm font-semibold transition-colors duration-150',
+									isActive
+										? 'bg-sky-50 text-sky-900'
+										: 'text-slate-600 hover:bg-sky-50 hover:text-sky-800',
+								]}
+								aria-current={isActive ? 'page' : undefined}
+							>
+								{link.label}
+							</a>
+						);
+					})
+				}
+			</nav>
+
+			<details class="relative lg:hidden">
+				<summary
+					class="flex min-h-12 min-w-12 cursor-pointer list-none items-center justify-center rounded-lg border border-sky-100 px-4 text-sm font-semibold text-sky-900"
+				>
+					Menu
+				</summary>
+				<nav
+					class="absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-sky-100 bg-white shadow-xl"
+					aria-label="Mobile navigation"
+				>
+					{
+						NAV_LINKS.map((link) => (
+							<a
+								href={link.href}
+								class="block min-h-12 border-b border-sky-50 px-4 py-3 text-sm font-semibold text-slate-700 last:border-b-0 hover:bg-sky-50 hover:text-sky-800"
+							>
+								{link.label}
+							</a>
+						))
+					}
+				</nav>
+			</details>
+		</div>
+	</div>
+</header>

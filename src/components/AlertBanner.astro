@@ -1,0 +1,14 @@
+---
+interface Props {
+	message: string;
+}
+
+const { message } = Astro.props;
+---
+
+<div
+	class="bg-amber-400 px-4 py-3 text-center text-sm font-semibold text-amber-950 sm:text-base"
+	role="status"
+>
+	{message}
+</div>

@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { sanityClient } from 'sanity:client';
+import { newsletterIssuesQuery } from '../../lib/queries';
+import { formatWeekOf, withNewsletterIssues } from '../../lib/content';
+
+const issues = withNewsletterIssues(await sanityClient.fetch(newsletterIssuesQuery));
+const [featured, ...archive] = issues;
+---
+
+<Layout title="Newsletter">
+	<PageHeader
+		title="Weekly Newsletter"
+		subtitle="Our latest community update and an archive of past issues."
+	/>
+
+	<div class="relative overflow-hidden bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<div class="absolute left-[4%] top-14 h-24 w-24 rotate-6 rounded-2xl bg-sky-200/60"></div>
+			<div class="absolute right-[6%] top-24 h-32 w-20 -rotate-12 rounded-2xl bg-amber-200/60"></div>
+			<div class="absolute bottom-24 left-[12%] h-28 w-28 rotate-3 rounded-2xl bg-teal-200/50"></div>
+			<div class="absolute bottom-10 right-[14%] h-20 w-32 -rotate-6 rounded-2xl bg-violet-200/40"></div>
+			<div class="absolute right-[40%] top-8 h-16 w-16 rotate-12 rounded-xl bg-amber-300/30"></div>
+		</div>
+
+		<div class="relative mx-auto max-w-4xl">
+			{
+				featured && (
+					<article class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-lg">
+						<div class="h-1.5 bg-sky-800"></div>
+						<div class="p-7 sm:p-9">
+							<p class="text-xs font-bold uppercase tracking-widest text-sky-700">Latest Issue</p>
+							<h2 class="mt-2 text-2xl font-extrabold tracking-tight text-sky-950 sm:text-3xl">
+								{featured.title}
+							</h2>
+							<p class="mt-1.5 text-sm font-medium text-slate-400">{formatWeekOf(featured.weekOf)}</p>
+							{featured.teaser && (
+								<p class="prose-bha mt-5 text-base text-slate-600">{featured.teaser}</p>
+							)}
+							{
+								featured.slug?.current && (
+									<a
+										href={`/newsletter/${featured.slug.current}`}
+										class="mt-7 inline-flex min-h-12 items-center rounded-full bg-sky-800 px-6 text-sm font-bold text-white transition-colors hover:bg-sky-900"
+									>
+										Read full issue →
+									</a>
+								)
+							}
+						</div>
+					</article>
+				)
+			}
+
+			{
+				archive.length > 0 && (
+					<div class="mt-10">
+						<h3 class="text-lg font-bold text-sky-950">Past Issues</h3>
+						<ul class="mt-4 space-y-3">
+							{archive.map((issue) => (
+								<li class="overflow-hidden rounded-xl border border-sky-100 bg-white shadow-sm transition-shadow hover:shadow-md">
+									<a
+										href={issue.slug?.current ? `/newsletter/${issue.slug.current}` : '#'}
+										class="flex min-h-14 items-center gap-4 px-5 py-4 hover:text-sky-800"
+									>
+										<div class="h-8 w-1 shrink-0 rounded-full bg-sky-200"></div>
+										<div>
+											<span class="block font-semibold text-slate-800">{issue.title}</span>
+											<span class="text-sm text-slate-400">{formatWeekOf(issue.weekOf)}</span>
+										</div>
+										<span class="ml-auto text-sky-600">→</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)
+			}
+		</div>
+	</div>
+</Layout>

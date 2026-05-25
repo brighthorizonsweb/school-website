@@ -1,0 +1,26 @@
+---
+import type { CaptionedImage } from '../lib/types';
+import { optimizedImageUrl } from '../lib/sanityImage';
+
+interface Props {
+	image: CaptionedImage;
+	class?: string;
+}
+
+const { image, class: className = '' } = Astro.props;
+
+const src = image.asset?._id
+	? optimizedImageUrl({ _ref: image.asset._id }, { width: 800 })
+	: image.asset?.url;
+---
+
+{
+	src && (
+		<figure class={`overflow-hidden rounded-xl bg-stone-100 ${className}`}>
+			<img src={src} alt={image.alt} class="h-full w-full object-cover" loading="lazy" />
+			{image.caption && (
+				<figcaption class="px-3 py-2 text-center text-sm text-slate-600">{image.caption}</figcaption>
+			)}
+		</figure>
+	)
+}

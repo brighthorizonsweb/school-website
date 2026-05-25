@@ -1,0 +1,35 @@
+
+I see you have taken a crack at the web desig. Let's take a more controlled approach.
+I am not an expert in Astro pages and Sanity schema structures using a "Structured Block" approach, so make recommendations as needed. Let's plan
+
+We have the logo in the file logo_color_v7: It says 'Bright Horizons Academy' with the subtext 'Proactive Learning, Empowered Futures'
+
+Bright Horizons Academy Mission Statement
+
+The mission of Bright Horizons Academy is to provide a faith-based education that blends strong academic instruction with hands-on, project-based learning to ensure students not only master core subjects, but know how to apply them in real life. Our students are challenged to think critically, solve problems, and take ownership of their learning. Through intentional leadership development and real-world skill building, they grow into confident, capable individuals prepared for both higher education and life beyond the classroom. The Academy is a carefully-curated learning community designed for families seeking more than traditional education currently offers. At Bright Horizons Academy, we believe education should be meaningful, engaging, and purpose-driven— guiding each student toward a bright and capable future. 
+
+We need a home page and probably the following pages as described: Use a small version of the logo on each page with a big one on the home page
+
+Home:
+	Logo
+	Mission statement
+	Banner at top for quick notices
+
+Newsletter:
+Calendar:
+Student Life:
+FAQ:
+Contact:
+
+
+
+
+
+
+
+
+
+
+
+
+

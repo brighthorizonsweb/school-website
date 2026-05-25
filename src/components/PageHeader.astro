@@ -1,0 +1,27 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="relative overflow-hidden bg-gradient-to-br from-sky-950 via-sky-900 to-sky-800 px-4 py-12 text-white sm:px-6 sm:py-14 lg:px-8">
+	<div
+		class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[length:28px_28px]"
+		aria-hidden="true"
+	>
+	</div>
+	<div class="relative mx-auto max-w-4xl text-center">
+		<h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
+		<div class="accent-divider"></div>
+		{
+			subtitle && (
+				<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-sky-100 sm:text-lg">
+					{subtitle}
+				</p>
+			)
+		}
+	</div>
+</div>

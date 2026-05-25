@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CaptionedImage from '../components/CaptionedImage.astro';
+import { sanityClient } from 'sanity:client';
+import { aboutPageQuery } from '../lib/queries';
+import { withAboutPage } from '../lib/content';
+
+const aboutPage = withAboutPage(await sanityClient.fetch(aboutPageQuery));
+---
+
+<Layout title={aboutPage.pageTitle}>
+	<PageHeader title={aboutPage.pageTitle ?? 'About'} subtitle={aboutPage.introParagraph} />
+
+	<section class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-3xl text-center">
+			<p class="text-xs font-bold uppercase tracking-widest text-sky-700">Why We Exist</p>
+			<h2 class="mt-2 text-2xl font-extrabold tracking-tight text-sky-950 sm:text-3xl">Mission</h2>
+			<span class="accent-divider"></span>
+			<p class="prose-bha mx-auto mt-7 text-base text-slate-600 sm:text-lg">{aboutPage.missionStatement}</p>
+		</div>
+	</section>
+
+	<section class="bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-4xl space-y-6">
+			{
+				aboutPage.sections?.map((section) => (
+					<article class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
+						<div class="flex">
+							<div class="w-1.5 shrink-0 bg-sky-800"></div>
+							<div class="p-7 sm:p-8">
+								<h3 class="text-xl font-bold text-sky-950">{section.heading}</h3>
+								<p class="prose-bha mt-3 text-slate-600">{section.body}</p>
+								{
+									section.images?.length ? (
+										<div class="mt-6 grid gap-4 sm:grid-cols-2">
+											{section.images.map((image) => (
+												<CaptionedImage image={image} />
+											))}
+										</div>
+									) : null
+								}
+							</div>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</Layout>

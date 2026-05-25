@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { sanityClient } from 'sanity:client';
+import { faqItemsQuery } from '../lib/queries';
+import { withFaqItems } from '../lib/content';
+
+const faqItems = withFaqItems(await sanityClient.fetch(faqItemsQuery));
+---
+
+<Layout title="FAQ">
+	<PageHeader
+		title="Frequently Asked Questions"
+		subtitle="Quick answers for prospective and current families."
+	/>
+
+	<section class="bg-stone-50 px-4 py-14 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-3xl space-y-3">
+			{
+				faqItems.map((item) => (
+					<details class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm transition-shadow hover:shadow-md">
+						<summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 text-left font-bold text-sky-950 marker:content-none">
+							<span class="flex flex-wrap items-center gap-2.5">
+								{item.question}
+								{item.isExample && (
+									<span class="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-amber-700">
+										Example
+									</span>
+								)}
+							</span>
+							<span
+								class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-800 transition-transform duration-200 group-open:rotate-45"
+								aria-hidden="true"
+							>
+								<svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+									<path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								</svg>
+							</span>
+						</summary>
+						<div class="border-t border-sky-50 bg-sky-50/40 px-6 py-5 text-sm leading-relaxed text-slate-600 sm:text-base">
+							{item.answer}
+						</div>
+					</details>
+				))
+			}
+		</div>
+	</section>
+</Layout>

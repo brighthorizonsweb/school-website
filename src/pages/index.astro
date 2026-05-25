@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sanityClient } from 'sanity:client';
+import { homePageQuery } from '../lib/queries';
+import { withHomePage } from '../lib/content';
+import { DEFAULT_SCHOOL_NAME, DEFAULT_TAGLINE } from '../lib/types';
+
+const homePage = withHomePage(await sanityClient.fetch(homePageQuery));
+
+const valueChips = [
+	{
+		title: 'Academic Rigor',
+		text: 'Strong core instruction with high expectations for every learner.',
+		icon: '📐',
+	},
+	{
+		title: 'Hands-On Learning',
+		text: 'Projects and real-world work that connect ideas to life beyond the classroom.',
+		icon: '🔧',
+	},
+	{
+		title: 'Leadership',
+		text: 'Students who think critically, own their progress, and act with confidence.',
+		icon: '🌟',
+	},
+];
+---
+
+<Layout>
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-sky-50 px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
+		<div
+			class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(7,89,133,0.07)_1px,transparent_1px)] bg-[length:26px_26px]"
+			aria-hidden="true"
+		>
+		</div>
+		<div
+			class="pointer-events-none absolute inset-0 bg-gradient-to-b from-sky-50/0 via-sky-50/10 to-stone-50"
+			aria-hidden="true"
+		>
+		</div>
+
+		<div class="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+			<img
+				src="/logo_color_v7.png"
+				alt={`${DEFAULT_SCHOOL_NAME} logo`}
+				class="h-auto w-full max-w-xs rounded-xl object-contain drop-shadow-lg sm:max-w-sm lg:max-w-md"
+			/>
+			<h1 class="mt-7 text-3xl font-extrabold tracking-tight text-sky-950 sm:text-4xl lg:text-5xl">
+				{DEFAULT_SCHOOL_NAME}
+			</h1>
+			<p class="mt-2 text-base font-semibold text-sky-700 sm:text-lg">{DEFAULT_TAGLINE}</p>
+			<span class="accent-divider"></span>
+			{
+				homePage.introLine && (
+					<p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+						{homePage.introLine}
+					</p>
+				)
+			}
+		</div>
+	</section>
+
+	<!-- Mission -->
+	<section class="bg-white px-4 py-16 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-3xl text-center">
+			<p class="text-xs font-bold uppercase tracking-widest text-sky-700">Who We Are</p>
+			<h2 class="mt-2 text-2xl font-extrabold tracking-tight text-sky-950 sm:text-3xl">Our Mission</h2>
+			<span class="accent-divider"></span>
+			<p class="prose-bha mx-auto mt-7 text-base text-slate-600 sm:text-lg">
+				{homePage.missionStatement}
+			</p>
+		</div>
+	</section>
+
+	<!-- Value chips -->
+	<section class="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-5xl">
+			<div class="mb-10 text-center">
+				<p class="text-xs font-bold uppercase tracking-widest text-sky-700">What Sets Us Apart</p>
+				<h2 class="mt-2 text-2xl font-extrabold tracking-tight text-sky-950 sm:text-3xl">
+					The Bright Horizons Difference
+				</h2>
+				<span class="accent-divider"></span>
+			</div>
+			<div class="grid gap-6 sm:grid-cols-3">
+				{
+					valueChips.map((chip) => (
+						<article class="flex flex-col overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm transition-shadow hover:shadow-md">
+							<div class="h-1.5 bg-sky-800"></div>
+							<div class="flex flex-1 flex-col p-7 text-center">
+								<span class="text-3xl" aria-hidden="true">{chip.icon}</span>
+								<h3 class="mt-4 text-lg font-bold text-sky-900">{chip.title}</h3>
+								<p class="mt-2 text-sm leading-relaxed text-slate-600">{chip.text}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>

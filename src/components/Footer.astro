@@ -1,0 +1,79 @@
+---
+import type { SiteSettings } from '../lib/types';
+import {
+	DEFAULT_EMAIL,
+	DEFAULT_PHONE,
+	DEFAULT_PHONE_TEL,
+	DEFAULT_SCHOOL_NAME,
+	DEFAULT_TAGLINE,
+	NAV_LINKS,
+} from '../lib/types';
+
+interface Props {
+	settings: SiteSettings;
+}
+
+const { settings } = Astro.props;
+
+const schoolName = settings.schoolName ?? DEFAULT_SCHOOL_NAME;
+const tagline = settings.tagline ?? DEFAULT_TAGLINE;
+const email = settings.adminEmail ?? DEFAULT_EMAIL;
+const phone = settings.phoneNumber ?? DEFAULT_PHONE;
+const phoneTel = phone.replace(/\D/g, '').length >= 10 ? `+1${phone.replace(/\D/g, '')}` : DEFAULT_PHONE_TEL;
+---
+
+<footer class="bg-sky-950 text-sky-50">
+	<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+		<div class="grid gap-10 md:grid-cols-3">
+			<div>
+				<div class="flex items-center gap-3">
+					<img
+						src="/logo_color_v7.png"
+						alt={`${schoolName} logo`}
+						class="h-10 w-auto max-w-[140px] rounded-lg object-contain"
+					/>
+				</div>
+				<p class="mt-4 text-sm font-semibold text-sky-100">{schoolName}</p>
+				<p class="mt-1 text-xs text-sky-300">{tagline}</p>
+			</div>
+
+			<div>
+				<p class="text-xs font-bold uppercase tracking-widest text-sky-400">Quick Links</p>
+				<ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-1">
+					{
+						NAV_LINKS.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class="inline-flex min-h-10 items-center text-sm text-sky-200 hover:text-white"
+								>
+									{link.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div>
+				<p class="text-xs font-bold uppercase tracking-widest text-sky-400">Contact</p>
+				<ul class="mt-4 space-y-3">
+					<li>
+						<a href={`mailto:${email}`} class="inline-flex min-h-10 items-center text-sm text-sky-200 hover:text-white">
+							{email}
+						</a>
+					</li>
+					<li>
+						<a href={`tel:${phoneTel}`} class="inline-flex min-h-10 items-center text-sm text-sky-200 hover:text-white">
+							{phone}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="border-t border-sky-900 px-4 py-4 text-center text-xs text-sky-500">
+		&copy; {new Date().getFullYear()} {schoolName}. All rights reserved.
+	</div>
+</footer>
