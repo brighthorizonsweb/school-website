@@ -32,8 +32,8 @@ const initials = person.name
 	<summary
 		class="flex cursor-pointer list-none items-center gap-3 rounded-xl px-2 py-3 transition-colors hover:bg-sky-50/70 [&::-webkit-details-marker]:hidden"
 	>
-		<!-- Small avatar (collapsed) -->
-		<div class="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg">
+		<!-- Thumbnail avatar (collapsed) -->
+		<div class="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
 			{
 				person.headshotUrl ? (
 					<img
@@ -45,7 +45,7 @@ const initials = person.name
 				) : (
 					<div
 						class:list={[
-							'flex h-full w-full items-center justify-center bg-gradient-to-br text-sm font-bold text-white',
+							'flex h-full w-full items-center justify-center bg-gradient-to-br text-lg font-bold text-white',
 							gradient,
 						]}
 					>
@@ -72,11 +72,11 @@ const initials = person.name
 		</svg>
 	</summary>
 
-	<!-- Expanded content -->
+	<!-- Expanded content — stacked vertically so the larger image fits the narrow column -->
 	<div class="px-2 pb-5 pt-2">
-		<div class="flex gap-3">
-			<!-- Larger avatar -->
-			<div class="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
+		<div class="flex flex-col items-center gap-3">
+			<!-- Large avatar -->
+			<div class="relative h-40 w-40 shrink-0 overflow-hidden rounded-xl">
 				{
 					person.headshotUrl ? (
 						<img
@@ -88,7 +88,7 @@ const initials = person.name
 					) : (
 						<div
 							class:list={[
-								'flex h-full w-full items-center justify-center bg-gradient-to-br text-xl font-bold text-white',
+								'flex h-full w-full items-center justify-center bg-gradient-to-br text-4xl font-bold text-white',
 								gradient,
 							]}
 						>
@@ -98,8 +98,8 @@ const initials = person.name
 				}
 			</div>
 
-			<!-- Text -->
-			<div class="min-w-0 flex-1">
+			<!-- Text below image -->
+			<div class="w-full text-center">
 				<p class="font-bold leading-tight text-sky-950">{person.name}</p>
 				{
 					person.title && (
@@ -108,7 +108,7 @@ const initials = person.name
 				}
 				{
 					person.bio && (
-						<p class="mt-2 text-xs leading-relaxed text-slate-600">{person.bio}</p>
+						<p class="mt-2 text-left text-xs leading-relaxed text-slate-600">{person.bio}</p>
 					)
 				}
 			</div>
