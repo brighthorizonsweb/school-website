@@ -6,6 +6,7 @@ import type {
 	HomePage,
 	LearningLifePage,
 	NewsletterIssue,
+	Person,
 	SiteSettings,
 } from './types';
 import { DEFAULT_EMAIL, DEFAULT_MISSION, DEFAULT_PHONE, DEFAULT_SCHOOL_NAME, DEFAULT_TAGLINE } from './types';
@@ -157,6 +158,30 @@ export const fallbackNewsletterIssues: NewsletterIssue[] = [
 		teaser:
 			'Example newsletter content: This week students wrapped up their bridge-building project, explored watercolor techniques, and prepared for our upcoming field trip...',
 	},
+];
+
+export const fallbackFaculty: Person[] = [
+	{
+		_id: 'placeholder-faculty-1',
+		name: 'Jane Doe',
+		title: 'Faculty',
+		bio: 'Bio content here.',
+	},
+	{
+		_id: 'placeholder-faculty-2',
+		name: 'John Doe',
+		title: 'Faculty',
+		bio: 'Bio content here.',
+	},
+];
+
+export const fallbackBoardMembers: Person[] = [
+	{ _id: 'placeholder-board-1', name: 'Jane Doe', title: 'Board Member', bio: 'Bio content here.' },
+	{ _id: 'placeholder-board-2', name: 'John Doe', title: 'Board Member', bio: 'Bio content here.' },
+	{ _id: 'placeholder-board-3', name: 'Jane Doe', title: 'Board Member', bio: 'Bio content here.' },
+	{ _id: 'placeholder-board-4', name: 'John Doe', title: 'Board Member', bio: 'Bio content here.' },
+	{ _id: 'placeholder-board-5', name: 'Jane Doe', title: 'Board Member', bio: 'Bio content here.' },
+	{ _id: 'placeholder-board-6', name: 'John Doe', title: 'Board Member', bio: 'Bio content here.' },
 ];
 
 export const fallbackNewsletterDetail: NewsletterIssue = {

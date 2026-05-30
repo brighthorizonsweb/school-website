@@ -35,6 +35,14 @@ export interface AboutPage {
 	sections?: ContentSection[];
 }
 
+export interface Person {
+	_id: string;
+	name: string;
+	title?: string;
+	bio?: string;
+	headshotUrl?: string;
+}
+
 export interface ContactPage {
 	headline?: string;
 	bodyText?: string;

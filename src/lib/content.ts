@@ -6,12 +6,15 @@ import type {
 	HomePage,
 	LearningLifePage,
 	NewsletterIssue,
+	Person,
 	SiteSettings,
 } from './types';
 import {
 	fallbackAboutPage,
+	fallbackBoardMembers,
 	fallbackCalendarEvents,
 	fallbackContactPage,
+	fallbackFaculty,
 	fallbackFaqItems,
 	fallbackHomePage,
 	fallbackLearningLifePage,
@@ -57,6 +60,14 @@ export function withCalendarEvents(data: CalendarEvent[] | null): CalendarEvent[
 
 export function withNewsletterIssues(data: NewsletterIssue[] | null): NewsletterIssue[] {
 	return data?.length ? data : fallbackNewsletterIssues;
+}
+
+export function withFaculty(data: Person[] | null): Person[] {
+	return data?.length ? data : fallbackFaculty;
+}
+
+export function withBoardMembers(data: Person[] | null): Person[] {
+	return data?.length ? data : fallbackBoardMembers;
 }
 
 function stripNulls<T extends object>(data: T | null | undefined): Partial<T> {

@@ -1,8 +1,10 @@
 import captionedImage from './objects/captionedImage';
 import contentSection from './objects/contentSection';
 import aboutPage from './documents/aboutPage';
+import boardMember from './documents/boardMember';
 import calendarEvent from './documents/calendarEvent';
 import contactPage from './documents/contactPage';
+import facultyMember from './documents/facultyMember';
 import faqItem from './documents/faqItem';
 import homePage from './documents/homePage';
 import learningLifePage from './documents/learningLifePage';
@@ -20,4 +22,6 @@ export const schemaTypes = [
 	newsletterIssue,
 	calendarEvent,
 	faqItem,
+	facultyMember,
+	boardMember,
 ];

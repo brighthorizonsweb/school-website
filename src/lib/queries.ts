@@ -87,3 +87,13 @@ export const newsletterIssueBySlugQuery = `*[_type == "newsletterIssue" && slug.
 }`;
 
 export const newsletterSlugsQuery = `*[_type == "newsletterIssue" && defined(slug.current)]{ "slug": slug.current }`;
+
+export const facultyQuery = `*[_type == "facultyMember"] | order(sortOrder asc, _createdAt asc) {
+  _id, name, title, bio,
+  "headshotUrl": headshot.asset->url
+}`;
+
+export const boardMembersQuery = `*[_type == "boardMember"] | order(sortOrder asc, _createdAt asc) {
+  _id, name, title, bio,
+  "headshotUrl": headshot.asset->url
+}`;

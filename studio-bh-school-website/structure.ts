@@ -44,11 +44,26 @@ export const structure: StructureResolver = (S) =>
 						.title('Calendar Events')
 						.defaultOrdering([{ field: 'date', direction: 'asc' }]),
 				),
-			S.listItem()
-				.title('FAQ')
-				.child(
-					S.documentTypeList('faqItem')
-						.title('FAQ Items')
-						.defaultOrdering([{ field: 'sortOrder', direction: 'asc' }]),
-				),
-		]);
+		S.listItem()
+			.title('FAQ')
+			.child(
+				S.documentTypeList('faqItem')
+					.title('FAQ Items')
+					.defaultOrdering([{ field: 'sortOrder', direction: 'asc' }]),
+			),
+		S.divider(),
+		S.listItem()
+			.title('Faculty')
+			.child(
+				S.documentTypeList('facultyMember')
+					.title('Faculty Members')
+					.defaultOrdering([{ field: 'sortOrder', direction: 'asc' }]),
+			),
+		S.listItem()
+			.title('Board Members')
+			.child(
+				S.documentTypeList('boardMember')
+					.title('Board Members')
+					.defaultOrdering([{ field: 'sortOrder', direction: 'asc' }]),
+			),
+	]);
