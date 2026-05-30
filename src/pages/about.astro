@@ -41,12 +41,12 @@ const boardMembers = withBoardMembers(rawBoard);
 		</div>
 
 		<div class="relative mx-auto max-w-7xl">
-			<div class="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_2fr_1fr]">
+			<div class="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_3fr_1fr]">
 
 				<!-- ── LEFT: Faculty ── (order-2 so About content comes first on mobile) -->
 				<aside class="order-2 lg:order-1">
 					<div class="rounded-2xl border border-sky-100 bg-white p-5 shadow-sm">
-						<div class="mb-4 border-b border-sky-50 pb-3">
+						<div class="mb-4 border-b border-sky-50 pb-3 text-center">
 							<p class="text-[10px] font-bold uppercase tracking-widest text-sky-700">
 								Our Team
 							</p>
@@ -63,7 +63,7 @@ const boardMembers = withBoardMembers(rawBoard);
 				<!-- ── MIDDLE: About content (order-1 so it appears first on mobile) -->
 				<div class="order-1 space-y-5 lg:order-2">
 					<!-- Mission card -->
-					<div class="rounded-2xl border border-sky-100 bg-white p-7 shadow-sm">
+					<div class="rounded-2xl border border-sky-100 bg-white p-7 shadow-sm text-center">
 						<p class="text-[10px] font-bold uppercase tracking-widest text-sky-700">
 							Why We Exist
 						</p>
@@ -73,7 +73,7 @@ const boardMembers = withBoardMembers(rawBoard);
 							Mission
 						</h2>
 						<span class="accent-divider"></span>
-						<p class="prose-bha mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
+						<p class="prose-bha mt-5 text-justify text-sm leading-relaxed text-slate-600 sm:text-base">
 							{aboutPage.missionStatement}
 						</p>
 					</div>
@@ -106,7 +106,7 @@ const boardMembers = withBoardMembers(rawBoard);
 				<!-- ── RIGHT: Board Members ── -->
 				<aside class="order-3">
 					<div class="rounded-2xl border border-sky-100 bg-white p-5 shadow-sm">
-						<div class="mb-4 border-b border-sky-50 pb-3">
+						<div class="mb-4 border-b border-sky-50 pb-3 text-center">
 							<p class="text-[10px] font-bold uppercase tracking-widest text-sky-700">
 								Governance
 							</p>
