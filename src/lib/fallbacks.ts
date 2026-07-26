@@ -20,14 +20,14 @@ export const fallbackSiteSettings: SiteSettings = {
 };
 
 export const fallbackHomePage: HomePage = {
-	introLine: 'A micro-school community where structure meets individuality.',
+	introLine: 'A community educational program where structure meets individuality.',
 	missionStatement: DEFAULT_MISSION,
 };
 
 export const fallbackAboutPage: AboutPage = {
 	pageTitle: 'About Bright Horizons Academy',
 	introParagraph:
-		'Bright Horizons Academy is a carefully-curated learning community for families seeking meaningful, engaging, purpose-driven education.',
+		'Bright Horizons Academy is a 501(c)(3) public charity (IRC §509(a)(2)) operating a community educational program—not a state-accredited primary or secondary school—for families seeking meaningful, engaging, purpose-driven learning.',
 	missionStatement: DEFAULT_MISSION,
 	sections: [
 		{
@@ -35,8 +35,8 @@ export const fallbackAboutPage: AboutPage = {
 			body: 'We blend strong academic instruction with hands-on, project-based learning so students master core subjects and know how to apply them in real life.',
 		},
 		{
-			heading: 'Micro-School Community',
-			body: 'With about 10–20 students, we offer a structured environment that still fosters individuality—every learner is known, challenged, and supported.',
+			heading: 'Community Educational Program',
+			body: 'As a small nonprofit community educational program (about 10–20 learners), we offer a structured environment that still fosters individuality—every participant is known, challenged, and supported.',
 		},
 		{
 			heading: 'Project-Based Learning',
@@ -84,7 +84,7 @@ export const fallbackFaqItems: FaqItem[] = [
 		_id: 'example-2',
 		question: 'How large are your classes?',
 		answer:
-			'Example: We are a micro-school of about 10–20 students, designed for individualized attention within a structured community.',
+			'Example: We are a community educational program designed for individualized attention within a structured learning community.',
 		isExample: true,
 		sortOrder: 2,
 	},

@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { sanityClient } from 'sanity:client';
 import { siteSettingsQuery } from '../lib/queries';
 import type { SiteSettings } from '../lib/types';
-import { DEFAULT_SCHOOL_NAME } from '../lib/types';
+import { DEFAULT_ORG_LEGAL_LINE, DEFAULT_SCHOOL_NAME, DEFAULT_SITE_DESCRIPTION } from '../lib/types';
 import AlertBanner from '../components/AlertBanner.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -20,6 +20,16 @@ const settings =
 const schoolName = settings.schoolName ?? DEFAULT_SCHOOL_NAME;
 const pageTitle = title ? `${title} | ${schoolName}` : schoolName;
 const currentPath = Astro.url.pathname;
+const siteOrigin = Astro.url.origin;
+
+const organizationJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'NGO',
+	name: schoolName,
+	description: DEFAULT_ORG_LEGAL_LINE,
+	url: siteOrigin,
+	nonprofitStatus: 'Nonprofit501c3',
+};
 ---
 
 <!doctype html>
@@ -30,7 +40,9 @@ const currentPath = Astro.url.pathname;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={DEFAULT_SITE_DESCRIPTION} />
 		<title>{pageTitle}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

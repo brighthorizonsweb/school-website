@@ -28,7 +28,7 @@ export default defineType({
 			title: 'Sections',
 			type: 'array',
 			of: [{ type: 'contentSection' }],
-			description: 'Additional sections such as Our Approach, Micro-School Community, etc.',
+			description: 'Additional sections such as Our Approach, Community Educational Program, etc.',
 		}),
 	],
 });

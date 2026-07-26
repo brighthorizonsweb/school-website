@@ -1,6 +1,6 @@
 # Bright Horizons Sanity Studio
 
-Content studio for the Bright Horizons school website.
+Content studio for the Bright Horizons community educational program website.
 
 - **Project ID:** `w4n109hm`
 - **Dataset:** `production`

@@ -86,6 +86,13 @@ export interface NewsletterIssue {
 export const DEFAULT_SCHOOL_NAME = 'Bright Horizons Academy';
 export const DEFAULT_TAGLINE = 'Proactive Learning, Empowered Futures';
 
+/** Shown in footer and meta tags; clarifies nonprofit program status for partners and verification. */
+export const DEFAULT_ORG_LEGAL_LINE =
+	'Bright Horizons Academy is a 501(c)(3) public charity classified under IRC §509(a)(2). We operate a community educational program and are not a state-accredited primary or secondary school.';
+
+export const DEFAULT_SITE_DESCRIPTION =
+	'501(c)(3) community educational program. Faith-based, project-based learning for families—not a state-accredited K–12 school.';
+
 export const DEFAULT_MISSION =
 	'The mission of Bright Horizons Academy is to provide a faith-based education that blends strong academic instruction with hands-on, project-based learning to ensure students not only master core subjects, but know how to apply them in real life. Our students are challenged to think critically, solve problems, and take ownership of their learning. Through intentional leadership development and real-world skill building, they grow into confident, capable individuals prepared for both higher education and life beyond the classroom. Bright Horizons Academy is a carefully-curated learning community designed for families seeking more than traditional education currently offers. At Bright Horizons Academy, we believe education should be meaningful, engaging, and purpose-driven— guiding each student toward a bright and capable future.';
 

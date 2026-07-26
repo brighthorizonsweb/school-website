@@ -42,7 +42,7 @@ const documents = [
 	{
 		_id: 'homePage',
 		_type: 'homePage',
-		introLine: 'A micro-school community where structure meets individuality.',
+		introLine: 'A community educational program where structure meets individuality.',
 		missionStatement: mission,
 	},
 	{
@@ -50,7 +50,7 @@ const documents = [
 		_type: 'aboutPage',
 		pageTitle: 'About Bright Horizons Academy',
 		introParagraph:
-			'Bright Horizons Academy is a carefully-curated learning community for families seeking meaningful, engaging, purpose-driven education.',
+			'Bright Horizons Academy is a 501(c)(3) public charity (IRC §509(a)(2)) operating a community educational program—not a state-accredited primary or secondary school—for families seeking meaningful, engaging, purpose-driven learning.',
 		missionStatement: mission,
 		sections: [
 			{
@@ -60,8 +60,8 @@ const documents = [
 			},
 			{
 				_type: 'contentSection',
-				heading: 'Micro-School Community',
-				body: 'With about 10–20 students, we offer a structured environment that still fosters individuality—every learner is known, challenged, and supported.',
+				heading: 'Community Educational Program',
+				body: 'As a small nonprofit community educational program (about 10–20 learners), we offer a structured environment that still fosters individuality—every participant is known, challenged, and supported.',
 			},
 			{
 				_type: 'contentSection',
@@ -113,7 +113,7 @@ const documents = [
 		_id: 'faq-example-2',
 		_type: 'faqItem',
 		question: 'How large are your classes?',
-		answer: 'Example: We are a micro-school of about 10–20 students.',
+		answer: 'Example: We are a community educational program of about 10–20 students.',
 		isExample: true,
 		sortOrder: 2,
 	},

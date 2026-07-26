@@ -7,7 +7,7 @@ export default defineType({
 	fields: [
 		defineField({
 			name: 'schoolName',
-			title: 'School Name',
+			title: 'Program Name',
 			type: 'string',
 			initialValue: 'Bright Horizons Academy',
 		}),
