@@ -22,6 +22,13 @@ export interface CaptionedImage {
 	};
 }
 
+export interface NewsletterImageBlock extends CaptionedImage {
+	_type: 'captionedImage';
+	_key?: string;
+}
+
+export type NewsletterBodyBlock = PortableTextBlock | NewsletterImageBlock;
+
 export interface ContentSection {
 	heading: string;
 	body: string;
@@ -79,7 +86,8 @@ export interface NewsletterIssue {
 	slug?: { current: string };
 	publishedAt?: string;
 	teaser?: string;
-	body?: PortableTextBlock[];
+	body?: NewsletterBodyBlock[];
+	/** @deprecated Prefer captioned images inside `body` so they stay in reading order. */
 	images?: CaptionedImage[];
 }
 

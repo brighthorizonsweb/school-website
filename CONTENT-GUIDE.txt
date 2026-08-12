@@ -193,10 +193,13 @@ Images:
   - Always fill in "Alt Text" — this is required for accessibility
   - Caption is optional and appears below the image on the website
 
-The website rebuilds automatically on Cloudflare whenever you publish
-content... [NOTE: This is only true if a build webhook is configured.
-If auto-rebuild is not set up, the site must be manually redeployed
-from GitHub or Cloudflare to reflect Sanity changes.]
+The live website rebuilds automatically on Cloudflare when you click
+Publish in Sanity. You do not need to redeploy from GitHub or Cloudflare
+for content edits (new newsletter issues, calendar events, page copy, etc.).
+
+Schema or website code changes are separate: those still need a Studio
+deploy (npx sanity deploy in studio-bh-school-website) and a git push
+so Cloudflare can build the new code.
 
 
 NONPROFIT STATUS & PUBLIC WORDING (IMPORTANT)
@@ -216,7 +219,3 @@ When editing Sanity content, please:
 
 This helps partners and services such as Google Workspace for Nonprofits
 correctly classify the organization.
-
-
-cd studio-bh-school-website
-npx sanity deploy

@@ -5,19 +5,22 @@ import { optimizedImageUrl } from '../lib/sanityImage';
 interface Props {
 	image: CaptionedImage;
 	class?: string;
+	variant?: 'card' | 'article';
 }
 
-const { image, class: className = '' } = Astro.props;
+const { image, class: className = '', variant = 'card' } = Astro.props;
 
 const src = image.asset?._id
-	? optimizedImageUrl({ _ref: image.asset._id }, { width: 800 })
+	? optimizedImageUrl({ _ref: image.asset._id }, { width: variant === 'article' ? 1200 : 800 })
 	: image.asset?.url;
+
+const imgClass = variant === 'article' ? 'h-auto w-full' : 'h-full w-full object-cover';
 ---
 
 {
 	src && (
 		<figure class={`overflow-hidden rounded-xl bg-stone-100 ${className}`}>
-			<img src={src} alt={image.alt} class="h-full w-full object-cover" loading="lazy" />
+			<img src={src} alt={image.alt} class={imgClass} loading="lazy" />
 			{image.caption && (
 				<figcaption class="px-3 py-2 text-center text-sm text-slate-600">{image.caption}</figcaption>
 			)}

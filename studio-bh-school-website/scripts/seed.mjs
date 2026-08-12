@@ -172,6 +172,20 @@ const documents = [
 					},
 				],
 			},
+			{
+				_type: 'block',
+				_key: 'b2',
+				style: 'normal',
+				markDefs: [],
+				children: [
+					{
+						_type: 'span',
+						_key: 's2',
+						text: "Look for permission forms going home this Friday. Thank you for partnering with us in your child's learning journey.",
+						marks: [],
+					},
+				],
+			},
 		],
 	},
 ];

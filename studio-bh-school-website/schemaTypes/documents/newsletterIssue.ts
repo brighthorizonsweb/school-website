@@ -33,13 +33,29 @@ export default defineType({
 			name: 'body',
 			title: 'Body',
 			type: 'array',
-			of: [{ type: 'block' }],
+			description:
+				'Write the issue in order. Click the + icon between blocks to add a paragraph or an image with caption.',
+			of: [
+				{
+					type: 'block',
+					styles: [
+						{ title: 'Paragraph', value: 'normal' },
+						{ title: 'Heading', value: 'h2' },
+						{ title: 'Subheading', value: 'h3' },
+					],
+				},
+				{ type: 'captionedImage', title: 'Image with caption' },
+			],
 		}),
 		defineField({
 			name: 'images',
-			title: 'Images',
+			title: 'Images (legacy)',
 			type: 'array',
 			of: [{ type: 'captionedImage' }],
+			deprecated: {
+				reason:
+					'Insert images in the Body field (click + between paragraphs) so photos appear in order with your text. Existing images here still show at the bottom of the issue until you move them.',
+			},
 		}),
 	],
 	orderings: [

@@ -4,7 +4,7 @@ import CaptionedImage from '../../components/CaptionedImage.astro';
 import { sanityClient } from 'sanity:client';
 import { newsletterIssueBySlugQuery, newsletterSlugsQuery } from '../../lib/queries';
 import { formatWeekOf } from '../../lib/content';
-import { portableTextToHtml } from '../../lib/portableText';
+import { groupNewsletterBody, portableTextToHtml } from '../../lib/portableText';
 import { fallbackNewsletterDetail } from '../../lib/fallbacks';
 import type { NewsletterIssue } from '../../lib/types';
 
@@ -31,7 +31,7 @@ if (!issue) {
 	return Astro.redirect('/newsletter');
 }
 
-const bodyHtml = portableTextToHtml(issue.body);
+const bodySegments = groupNewsletterBody(issue.body);
 ---
 
 <Layout title={issue.title}>
@@ -46,8 +46,16 @@ const bodyHtml = portableTextToHtml(issue.body);
 		</header>
 
 		{
-			bodyHtml && (
-				<div class="prose-bha mt-8 max-w-none" set:html={bodyHtml} />
+			bodySegments.length > 0 && (
+				<div class="mt-8 space-y-8">
+					{bodySegments.map((segment) =>
+						segment.kind === 'image' ? (
+							<CaptionedImage image={segment.image} variant="article" class="mx-auto max-w-3xl" />
+						) : (
+							<div class="prose-bha max-w-none" set:html={portableTextToHtml(segment.blocks)} />
+						),
+					)}
+				</div>
 			)
 		}
 

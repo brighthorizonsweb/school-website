@@ -205,6 +205,12 @@ export const fallbackNewsletterDetail: NewsletterIssue = {
 			],
 		},
 		{
+			_type: 'captionedImage',
+			_key: 'example-image',
+			alt: 'Students presenting project work',
+			caption: 'Bridge-building presentations in the science studio.',
+		},
+		{
 			_type: 'block',
 			_key: 'example2',
 			style: 'normal',
