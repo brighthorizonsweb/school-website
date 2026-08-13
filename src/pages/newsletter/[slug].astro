@@ -50,7 +50,7 @@ const bodySegments = groupNewsletterBody(issue.body);
 				<div class="mt-8 space-y-8">
 					{bodySegments.map((segment) =>
 						segment.kind === 'image' ? (
-							<CaptionedImage image={segment.image} variant="article" class="mx-auto max-w-3xl" />
+							<CaptionedImage image={segment.image} variant="article" />
 						) : (
 							<div class="prose-bha max-w-none" set:html={portableTextToHtml(segment.blocks)} />
 						),

@@ -19,6 +19,13 @@ export interface CaptionedImage {
 	asset?: {
 		_id: string;
 		url?: string;
+		metadata?: {
+			dimensions?: {
+				width: number;
+				height: number;
+				aspectRatio: number;
+			};
+		};
 	};
 }
 
