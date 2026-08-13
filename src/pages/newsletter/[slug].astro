@@ -58,15 +58,5 @@ const bodySegments = groupNewsletterBody(issue.body);
 				</div>
 			)
 		}
-
-		{
-			issue.images?.length ? (
-				<div class="mt-10 grid gap-6 sm:grid-cols-2">
-					{issue.images.map((image) => (
-						<CaptionedImage image={image} />
-					))}
-				</div>
-			) : null
-		}
 	</article>
 </Layout>

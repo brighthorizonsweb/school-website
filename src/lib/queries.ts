@@ -83,11 +83,6 @@ export const newsletterIssueBySlugQuery = `*[_type == "newsletterIssue" && slug.
     _type == "captionedImage" => {
       "asset": image.asset->{ _id, url }
     }
-  },
-  images[]{
-    alt,
-    caption,
-    "asset": image.asset->{ _id, url }
   }
 }`;
 

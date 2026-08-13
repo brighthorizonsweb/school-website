@@ -116,8 +116,10 @@ To create a new issue:
        - Week Of        → Pick the date from the calendar
        - Slug           → Click "Generate" (auto-fills from title)
        - Published At   → Optional date/time stamp
-       - Body           → Main newsletter text (supports bold, italic, links, paragraphs)
-       - Images         → Upload one or more photos; each can have alt text and a caption
+       - Body           → Write the issue in order. Add paragraphs, headings,
+                          or lists, and click + between blocks to insert an
+                          image with caption. You can add several paragraphs
+                          or several images in a row — any order is fine.
   3. Click "Publish"
 
 To edit an existing issue:

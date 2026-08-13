@@ -87,8 +87,6 @@ export interface NewsletterIssue {
 	publishedAt?: string;
 	teaser?: string;
 	body?: NewsletterBodyBlock[];
-	/** @deprecated Prefer captioned images inside `body` so they stay in reading order. */
-	images?: CaptionedImage[];
 }
 
 export const DEFAULT_SCHOOL_NAME = 'Bright Horizons Academy';
