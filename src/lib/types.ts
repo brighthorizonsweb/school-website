@@ -92,8 +92,10 @@ export interface NewsletterIssue {
 	weekOf: string;
 	slug?: { current: string };
 	publishedAt?: string;
+	format?: 'page' | 'pdf';
 	teaser?: string;
 	body?: NewsletterBodyBlock[];
+	pdfUrl?: string;
 }
 
 export const DEFAULT_SCHOOL_NAME = 'Bright Horizons Academy';

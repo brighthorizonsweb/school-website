@@ -69,7 +69,11 @@ export const newsletterIssuesQuery = `*[_type == "newsletterIssue"] | order(week
   weekOf,
   slug,
   publishedAt,
-  "teaser": pt::text(body)[0..200]
+  format,
+  "teaser": select(
+    format == "pdf" => "This issue is a PDF you can open and scroll on any device.",
+    pt::text(body)[0..200]
+  )
 }`;
 
 export const newsletterIssueBySlugQuery = `*[_type == "newsletterIssue" && slug.current == $slug][0]{
@@ -78,6 +82,8 @@ export const newsletterIssueBySlugQuery = `*[_type == "newsletterIssue" && slug.
   weekOf,
   slug,
   publishedAt,
+  format,
+  "pdfUrl": pdf.asset->url,
   body[]{
     ...,
     _type == "captionedImage" => {

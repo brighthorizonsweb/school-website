@@ -157,6 +157,7 @@ const documents = [
 		weekOf: dateOffset(-7),
 		slug: { _type: 'slug', current: 'week-of-may-19' },
 		publishedAt: new Date().toISOString(),
+		format: 'page',
 		body: [
 			{
 				_type: 'block',

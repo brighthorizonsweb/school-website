@@ -155,6 +155,7 @@ export const fallbackNewsletterIssues: NewsletterIssue[] = [
 		title: 'Week of May 19 — Example Issue',
 		weekOf: formatDateOffset(-7),
 		slug: { current: 'week-of-may-19-example' },
+		format: 'page',
 		teaser:
 			'Example newsletter content: This week students wrapped up their bridge-building project, explored watercolor techniques, and prepared for our upcoming field trip...',
 	},
@@ -189,6 +190,7 @@ export const fallbackNewsletterDetail: NewsletterIssue = {
 	title: 'Week of May 19 — Example Issue',
 	weekOf: formatDateOffset(-7),
 	slug: { current: 'week-of-may-19-example' },
+	format: 'page',
 	body: [
 		{
 			_type: 'block',

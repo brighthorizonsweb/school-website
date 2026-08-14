@@ -1,0 +1,36 @@
+---
+interface Props {
+	src: string;
+	title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div class="mt-8">
+	<div class="flex flex-col gap-3 sm:flex-row">
+		<a
+			href={src}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-flex min-h-12 items-center justify-center rounded-full bg-sky-800 px-6 text-sm font-bold text-white transition-colors hover:bg-sky-900"
+		>
+			Open PDF
+		</a>
+		<a
+			href={src}
+			download
+			class="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-sky-800 px-6 text-sm font-bold text-sky-800 transition-colors hover:bg-sky-50"
+		>
+			Download PDF
+		</a>
+	</div>
+	<p class="mt-4 text-sm leading-relaxed text-slate-500 md:hidden">
+		Opens in your device’s PDF viewer so you can scroll through the full issue.
+	</p>
+	<iframe
+		src={src}
+		title={title}
+		class="mt-8 hidden h-[80vh] w-full rounded-xl border border-sky-100 bg-white md:block"
+	></iframe>
+</div>

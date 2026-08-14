@@ -35,6 +35,11 @@ const [featured, ...archive] = issues;
 								{featured.title}
 							</h2>
 							<p class="mt-1.5 text-sm font-medium text-slate-400">{formatWeekOf(featured.weekOf)}</p>
+							{
+								featured.format === 'pdf' && (
+									<p class="mt-3 text-xs font-bold uppercase tracking-widest text-sky-700">PDF</p>
+								)
+							}
 							{featured.teaser && (
 								<p class="prose-bha mt-5 text-base text-slate-600">{featured.teaser}</p>
 							)}
@@ -67,7 +72,10 @@ const [featured, ...archive] = issues;
 										<div class="h-8 w-1 shrink-0 rounded-full bg-sky-200"></div>
 										<div>
 											<span class="block font-semibold text-slate-800">{issue.title}</span>
-											<span class="text-sm text-slate-400">{formatWeekOf(issue.weekOf)}</span>
+											<span class="text-sm text-slate-400">
+												{formatWeekOf(issue.weekOf)}
+												{issue.format === 'pdf' ? ' · PDF' : ''}
+											</span>
 										</div>
 										<span class="ml-auto text-sky-600">→</span>
 									</a>
