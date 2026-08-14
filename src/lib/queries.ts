@@ -70,10 +70,7 @@ export const newsletterIssuesQuery = `*[_type == "newsletterIssue"] | order(week
   slug,
   publishedAt,
   format,
-  "teaser": select(
-    format == "pdf" => "This issue is a PDF you can open and scroll on any device.",
-    pt::text(body)[0..200]
-  )
+  "teaser": pt::text(body)[0..200]
 }`;
 
 export const newsletterIssueBySlugQuery = `*[_type == "newsletterIssue" && slug.current == $slug][0]{
